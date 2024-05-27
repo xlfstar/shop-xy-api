@@ -1,0 +1,6 @@
+{
+  "token": "",
+  "appID": "wx7101ecb5b9203af8",
+  "appScrect": "dc4eb6aac4473f55f510c4a33b9c6469",
+  "appUrl": "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=' + config.appId + '&secret=' + config.appScrect"
+}
