@@ -6,14 +6,14 @@ router.post('/add/:goods_id', async (req, res, next) => {
   let list = req.body
   let { goods_id } = req.params
   list = list?.map((item) => {
-    const { status, sku_image, stock, price, cost_price, spec_values } = item || {}
-    return { goods_id, status, sku_image, stock, price: price * 100, cost_price: cost_price * 100, spec_values }
+    const { status, sku_image, stock, price, cost_price, spec_values, id } = item || {}
+    return { id, goods_id, status, sku_image, stock, price: price * 100, cost_price: cost_price * 100, spec_values }
   })
 
   try {
-    let data = await goods_sku.destroy({
-      where: { goods_id }
-    })
+    // let data = await goods_sku.destroy({
+    //   where: { goods_id }
+    // })
     data = await goods_sku.bulkCreate(list) //批量新增
     if (data) {
       res.json({

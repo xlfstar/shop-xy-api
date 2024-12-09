@@ -3,14 +3,17 @@ const router = express.Router()
 const { goods_sku } = require('../../../models')
 
 router.post('/add/:goods_id', async (req, res, next) => {
+  console.log('-----11');
   let list = req.body
   let { goods_id } = req.params
+  console.log({goods_id,list});
   list = list?.map((item) => {
     const { status, sku_image, stock, price, cost_price, spec_values } = item || {}
     return { goods_id, status, sku_image, stock, price: price * 100, cost_price: cost_price * 100, spec_values }
   })
 
   try {
+    console.log('-----22');
     let data = await goods_sku.destroy({
       where: { goods_id }
     })
@@ -23,6 +26,7 @@ router.post('/add/:goods_id', async (req, res, next) => {
       })
     }
   } catch (error) {
+    console.log('-----33');
     next(error)
   }
 })

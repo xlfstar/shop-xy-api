@@ -3,6 +3,7 @@ const { sequelize } = require('../models')
 const cors = require('cors')
 const fileUpload = require('express-fileupload')
 const { SERVER_PORT } = require('./constant')
+const { jwtCheck } =require( './utils/jwt')
 
 const app = express()
 app.use(
@@ -47,8 +48,11 @@ const {
   orderRouter,
   payMethodRouter,
   brandRouter,
-  wxRouter
+  wxRouter,
+  cartRouter,
+  memberRouter
 } = require('./router')
+app.use('/m',jwtCheck)
 app.use('/', pubRouter)
 app.use('/m/category', mCategoryRouter)
 app.use('/m/goods', mGoodsRouter)
@@ -64,11 +68,12 @@ app.use('/goods', goodsRouter)
 app.use('/spec', goodsSpecRouter)
 app.use('/attr', goodsSpecValueRouter)
 app.use('/sku', goodsSkusRouter)
-app.use('/order', orderRouter)
+app.use('/order',jwtCheck, orderRouter)
 app.use('/payMethod', payMethodRouter)
 app.use('/brand', brandRouter)
 app.use('/wx', wxRouter)
-
+app.use('/cart',jwtCheck,cartRouter)
+app.use('/member',memberRouter,)
 const alter = false
 
 if (alter) {

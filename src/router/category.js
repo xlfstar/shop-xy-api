@@ -82,6 +82,7 @@ router.post('/delete', async (req, res, next) => {
   }
 })
 router.get('/list', async (req, res, next) => {
+  
   let { name, page = 1, limit = 20, status, orderby } = req.query
   let { field = 'updatedAt', direction = 'DESC' } = orderby || {}
   page = Number(page)

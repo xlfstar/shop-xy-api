@@ -12,6 +12,7 @@ router.post('/create', async (req, res, next) => {
 
   try {
     let data = await goods.create(values)
+    console.log('---------------------------',data);
     if (data) {
       res.json({
         data,
@@ -80,9 +81,11 @@ router.post('/delete', async (req, res, next) => {
     next(error)
   }
 })
+
 router.get('/list', async (req, res, next) => {
   let { title, page = 1, limit = 20, status, orderby, cate_id } = req.query
   let { field = 'updatedAt', direction = 'DESC' } = orderby || {}
+  console.log('---status',status,'----cate_id',cate_id);
   status = Number(status)
   page = Number(page)
   limit = Number(limit)
@@ -153,7 +156,6 @@ router.get('/banner/list', async (req, res, next) => {
       where: { status: 1, is_index_recommend: 1 },
       order: [['updatedAt', 'DESC']]
     })
-    console.log('----data', data)
     if (data) {
       res.json({
         data: data,

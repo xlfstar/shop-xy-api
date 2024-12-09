@@ -5,6 +5,7 @@ function md5(str) {
   const md5String = crypto.createHash('md5')
   const res = md5String.update(str).digest('hex')
   return res
+  // return str
 }
 
 function cryptoPassword(password) {

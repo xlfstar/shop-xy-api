@@ -18,6 +18,8 @@ const goodsSkusRouter = require('./goods_sku')
 const orderRouter = require('./order')
 const payMethodRouter = require('./paymentMethods')
 const brandRouter = require('./brands')
+const cartRouter = require('./cart')
+const memberRouter = require('./member')
 const wxRouter = require('./wx/getAccessToken')
 module.exports = {
   pubRouter,
@@ -38,5 +40,7 @@ module.exports = {
   orderRouter,
   payMethodRouter,
   brandRouter,
-  wxRouter
+  wxRouter,
+  cartRouter,
+  memberRouter
 }

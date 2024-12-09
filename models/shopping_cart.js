@@ -25,11 +25,12 @@ module.exports = (sequelize, DataTypes) => {
       sku_id: {
         type: DataTypes.INTEGER,
         comment: 'sku_id唯一标识',
-        allowNull: false
+        allowNull: false,
+        defaultValue:0
       },
       status: {
         type: DataTypes.TINYINT(1),
-        comment: '状态0:手动操作移除出购物车,1:正常在购物车里面,2:已经结算，系统自动移除',
+        comment: '状态0:手动操作移除出购物车,1:正常在购物车里面,2:待付款,3:已经结算，系统自动移除',
         defaultValue: 1
       },
       numbers: {
@@ -37,6 +38,12 @@ module.exports = (sequelize, DataTypes) => {
         comment: '数量',
         defaultValue: 1,
         allowNull: false
+      },
+      extra:{
+        type:DataTypes.TEXT,
+        comment:'商品信息镜像',
+        allowNull:false,
+        defaultValue:'{}'
       }
     },
     {

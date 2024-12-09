@@ -12,6 +12,7 @@ router.post('/create', async (req, res, next) => {
 
   try {
     let data = await goods.create(values)
+    console.log('--------------data----------',data);
     if (data) {
       res.json({
         data,
@@ -53,7 +54,24 @@ router.post('/update', async (req, res, next) => {
     next(error)
   }
 })
-
+router.post('/updateStock',async(req,res,next)=>{
+  const {id,stock} = req.body
+  try {
+    let data = await goods.update({stock}, {
+      where: {
+        id
+      }
+    })
+    if (data) {
+      res.json({ data, message: '商品库存更新成功', code: 200 })
+    } else {
+      res.json({ data, message: '商品库存更新失败', code: 401 })
+    }
+  } catch (error) {
+    next(error)
+  }
+  
+})
 router.post('/delete', async (req, res, next) => {
   let { id } = req.body
   try {

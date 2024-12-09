@@ -3,7 +3,7 @@ const router = express.Router()
 const { Op } = require('sequelize')
 const _ = require('lodash')
 
-const BASE_URL = 'http://192.168.0.104'
+const BASE_URL = 'http://localhost'
 const { SERVER_PORT } = require('../../constant')
 
 const responseUrl = `${BASE_URL}:${SERVER_PORT}`
